@@ -1,4 +1,5 @@
 const boom = require('@hapi/boom');
+const getConexion = require('./../libs/postgres');
 
 class UserService {
   constructor() {}
@@ -8,7 +9,10 @@ class UserService {
   }
 
   async find() {
-    return [];
+    const client = await getConexion();
+    const rta = await client.query('SELECT * FROM Tasks');
+    return rta.rows;
+   //return [];
   }
 
   async findOne(id) {
