@@ -38,8 +38,9 @@ class ProductsService {
   async find() {
     const query = 'SELECT * FROM tasks';
     //const rta = await this.pool.query(query);
-    const [data, metadata] = await this.sequelize.query(query);
-    return { data, metadata };
+    //const [data, metadata] = await this.sequelize.query(query);
+    const [data] = await this.sequelize.query(query);
+    return { data };
     //return this.products;
   }
 
