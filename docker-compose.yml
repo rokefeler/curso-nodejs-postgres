@@ -1,35 +1,35 @@
 version: '3.8'
 
 services:
-  # postgres:
-  #   image: postgres:13
-  #   environment:
-  #     - POSTGRES_DB=my_store
-  #     - POSTGRES_USER=nico
-  #     - POSTGRES_PASSWORD=admin123
-  #   ports:
-  #     - 5432:5432
-  #   volumes:
-  #     - ./postgres_data:/var/lib/postgresql/data
-
-  # pgadmin:
-  #   image: dpage/pgadmin4:latest
-  #   environment:
-  #     - PGADMIN_DEFAULT_EMAIL=admin@admin.com
-  #     - PGADMIN_DEFAULT_PASSWORD=admin
-  #   ports:
-  #     - 5050:80
-
-  mariadb:
-    image: mariadb
-    restart: always
+  postgres:
+    image: postgres
     environment:
-      - MARIADB_ROOT_PASSWORD=admin123
-      - MARIADB_DATABASE=my_store
+      - POSTGRES_DB=my_store
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
     ports:
-      - 3307:3306
+      - 5432:5432
     volumes:
-      - ./mariadb_data:/var/lib/mysql
+      - ./postgres_data:/var/lib/postgresql@14/data:rw
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
+    ports:
+      - 5050:80
+
+  # mariadb:
+  #   image: mariadb
+  #   restart: always
+  #   environment:
+  #     - MARIADB_ROOT_PASSWORD=admin123
+  #     - MARIADB_DATABASE=my_store
+  #   ports:
+  #     - 3307:3306
+  #   volumes:
+  #     - ./mariadb_data:/var/lib/mysql
   # mysql:
   #   image: mysql:5.7
   #   restart: always
