@@ -1,4 +1,3 @@
-const { CustomerSchema } = require('./customer.model');
 const { User, UserSchema } = require('./user.model');
 const { Customer, CustomerSchema } = require('./customer.model');
 
@@ -8,7 +7,7 @@ function setupModels(sequelize){
 
   //relaciones que hubiera
   Customer.associate(sequelize.models);
-
+  User.associate(sequelize.models);
 }
 
 module.exports = setupModels;
