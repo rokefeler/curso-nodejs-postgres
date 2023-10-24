@@ -5,6 +5,13 @@ class CustomerService {
 
   constructor() {}
 
+  async create(data) {
+    const newCustomer = await models.Customer.create(data, {
+      include: ['user']
+    });
+    return newCustomer;
+  }
+
   async find() {
     const rta = await models.Customer.findAll({
       include: ['user']
@@ -18,19 +25,6 @@ class CustomerService {
       throw boom.notFound('customer not found');
     }
     return user;
-  }
-
-  async create(data) {
-    // const newUser = await models.user.create(data.user);
-    // const newCustomer = await models.Customer.create({
-    //   ...data,
-    //   userId: newUser.Id
-    //   });
-
-    const newCustomer = await models.Customer.create(data, {
-      include: ['user']
-    });
-    return newCustomer;
   }
 
   async update(id, changes) {
