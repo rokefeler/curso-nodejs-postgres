@@ -194,6 +194,8 @@ $RECYCLE.BIN/
 
 #postgress docker volumen data
 postgres_data
+postgres_data_bak
+pgadmin_data
 mysql_data
 mariadb_data
 # End of https://www.toptal.com/developers/gitignore/api/node,windows,linux,macos
